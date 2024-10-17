@@ -19,7 +19,6 @@ const ResetPassword = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email);
   };
 
   return (
