@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { Suspense, lazy } from 'react';
 import { Outlet, createBrowserRouter } from 'react-router-dom';
 import Splash from 'components/loader/Splash';
