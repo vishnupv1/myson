@@ -6,7 +6,7 @@ const app = express();
 const productRoutes = require("./routes/productRoute");
 const categoryRoutes = require("./routes/categoryRoute");
 const brandRoutes = require("./routes/brandRoute");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors());

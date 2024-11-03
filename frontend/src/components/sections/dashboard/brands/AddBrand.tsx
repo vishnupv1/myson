@@ -9,6 +9,7 @@ import {
   FormControl,
   Typography,
   IconButton,
+  Stack,
 } from '@mui/material';
 // import { useNavigate } from 'react-router-dom';
 import PageLoader from 'components/loader/PageLoader';
@@ -28,6 +29,7 @@ const AddBrand = ({
   const [formData, setFormData] = useState({
     name: '',
     description: '',
+    image: '',
   });
 
   const [errors, setErrors] = useState({
@@ -43,16 +45,44 @@ const AddBrand = ({
       setFormData({
         name: brand.name,
         description: brand.description,
+        image: brand.image,
       });
     }
   }, [isEditMode, brand]);
-
+  const convertToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        if (reader.result) {
+          resolve(reader.result as string);
+        }
+      };
+      reader.onerror = (error) => reject(error);
+    });
+  };
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     setErrors({ ...errors, [name]: false });
   };
-
+  const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const base64Image = await convertToBase64(file);
+      setFormData({ ...formData, image: base64Image });
+    }
+  };
+  const removeImage = () => {
+    setFormData({ ...formData, image: '' });
+  };
+  const replaceImage = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const newImage = e.target.files[0];
+      const base64 = await convertToBase64(newImage);
+      setFormData({ ...formData, image: base64 });
+    }
+  };
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -140,6 +170,38 @@ const AddBrand = ({
                 error={errors.description}
               />
             </FormControl>
+            <Box sx={{ mt: 3, mb: 2 }}>
+              <Typography variant="subtitle1">Brand Image</Typography>
+              <Button variant="contained" component="label" sx={{ mt: 1, mb: 2 }}>
+                Upload Image
+                <input type="file" hidden accept="image/*" onChange={handleImageChange} />
+              </Button>
+
+              {/* Image Preview */}
+              {formData.image && (
+                <Box sx={{ position: 'relative', width: 120, mt: 2 }}>
+                  <img
+                    src={formData.image}
+                    alt="preview"
+                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
+                  />
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    sx={{ position: 'absolute', top: 0, right: 0 }}
+                  >
+                    <IconButton onClick={removeImage} color="error">
+                      <IconifyIcon icon="mingcute:close-square-line" />
+                    </IconButton>
+                    <IconButton component="label">
+                      <IconifyIcon icon="material-symbols:replace-image-outline-sharp" />
+                      <input type="file" hidden accept="image/*" onChange={replaceImage} />
+                    </IconButton>
+                  </Stack>
+                </Box>
+              )}
+            </Box>
+
             <Button type="submit" variant="contained" size="large" sx={{ mt: 3 }} fullWidth>
               {isEditMode ? 'Update Brand' : 'Add Brand'}
             </Button>

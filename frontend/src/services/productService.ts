@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Base URL (optional, if you're using a proxy in React or making calls to the same server)
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "http://localhost:5001/api/products";
 
 // Fetch all products
 export const getProducts = async () => {
@@ -29,6 +29,15 @@ export const addProduct = async (product:any) => {
 export const editProduct = async (updatedProduct: any,id: string) => {
   try {
     const res = await axios.put(`${API_URL}/${id}`, updatedProduct);
+    return res.data; // Return the updated category data if needed
+  } catch (error) {
+    console.error("Error editing product:", error);
+    throw error; // Re-throw error to handle it in the calling function
+  }
+};
+export const getSingleProduct = async (id: string) => {
+  try {
+    const res = await axios.get(`${API_URL}/${id}`);
     return res.data; // Return the updated category data if needed
   } catch (error) {
     console.error("Error editing product:", error);

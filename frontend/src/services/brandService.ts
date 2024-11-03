@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Base URL (optional, if you're using a proxy in React or making calls to the same server)
-const API_URL = "http://localhost:5000/api/brands";
+const API_URL = "http://localhost:5001/api/brands";
 
 // Fetch all categories
 export const getBrands = async () => {

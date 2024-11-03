@@ -10,6 +10,29 @@ const getProducts = async (req, res) => {
   }
 };
 
+const getBrandProducts = async (req, res) => {
+  try {
+    const { brand } = req.query;
+    const products = await Product.find({ brand });
+    if (!products.length) {
+      res.status(500).json({ message: "Error fetching product", error });
+    } else {
+      res.json(products);
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching products", error });
+  }
+};
+const getSingleProduct = async (req, res) => {
+  try {
+    const { id } = req.params; // Get product ID from request params
+    const product = await Product.findById(id);
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching product", error });
+  }
+};
+
 // Add a new product
 const addProduct = async (req, res) => {
   try {
@@ -56,4 +79,6 @@ module.exports = {
   addProduct,
   deleteProduct,
   updateProduct,
+  getSingleProduct,
+  getBrandProducts,
 };
