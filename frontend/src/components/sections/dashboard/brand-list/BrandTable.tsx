@@ -5,7 +5,8 @@ import DataGridFooter from 'components/common/DataGridFooter';
 import ActionMenu from './ActionMenu';
 import { getBrands, deleteBrand } from 'services/brandService';
 import AddBrand from '../brands/AddBrand'; // Import the AddBrand component
-import { Drawer } from '@mui/material'; // Import Drawer from Material UI
+import { Drawer, Stack, Typography } from '@mui/material'; // Import Drawer from Material UI
+import Image from 'components/base/Image';
 
 interface Category {
   _id: string;
@@ -57,7 +58,28 @@ const BrandTable = ({ searchText }: any) => {
   };
 
   const columns: GridColDef[] = [
-    { field: 'name', headerName: 'Brand Name', flex: 1 },
+    {
+      field: 'name',
+      headerName: 'Brand Name',
+      editable: false,
+      align: 'left',
+      flex: 2,
+      minWidth: 220,
+      renderCell: (params) => (
+        <Stack height={1} spacing={1.5} alignItems="center" justifyContent="flex-start">
+          <Image
+            src={params?.row?.image ? params?.row?.image : ''} // Assuming the image field in product data
+            height={30}
+            width={30}
+            sx={{ objectFit: 'cover', borderRadius: 1.5 }}
+          />
+          <Typography variant="caption" fontWeight={600}>
+            {params.row.name} {/* Assuming 'name' in product data */}
+          </Typography>
+        </Stack>
+      ),
+      sortComparator: (v1, v2) => v1.localeCompare(v2),
+    },
     { field: 'description', headerName: 'Description', flex: 2 },
     {
       field: 'action',
