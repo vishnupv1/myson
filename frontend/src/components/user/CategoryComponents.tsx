@@ -32,7 +32,7 @@ const CategoryComponents: React.FC = () => {
   }, []);
 
   const handleSelectBrand = (name: string) => {
-    navigate(`/admin/products/${name}`);
+    navigate(`/products/${name}`);
   };
 
   const images: Brand[] = [

@@ -10,6 +10,8 @@ import CategoryList from 'components/sections/dashboard/category-list';
 import BrandList from 'components/sections/dashboard/brand-list';
 import AddBrand from 'components/sections/dashboard/brands/AddBrand';
 import UserApp from 'components/user/AppUser';
+import ProductPage from 'components/user/ProductPage';
+import BrandProducts from 'components/user/BrandProducts';
 
 const App = lazy(() => import('App'));
 const MainLayout = lazy(() => import('layouts/main-layout'));
@@ -20,6 +22,68 @@ const SignUp = lazy(() => import('pages/authentication/SignUp'));
 const ResetPassword = lazy(() => import('pages/authentication/ResetPassword'));
 const Error404 = lazy(() => import('pages/errors/Error404'));
 
+const userRoutes = [
+  {
+    children: [
+      { path: '/', element: <UserApp /> },
+      { path: '/product/:id', element: <ProductPage /> },
+      { path: '/products/:name', element: <BrandProducts /> },
+    ],
+  },
+];
+
+const adminRoutes = [
+  {
+    path: '/admin',
+    element: (
+      <MainLayout>
+        <Suspense fallback={<PageLoader />}>
+          <Outlet />
+        </Suspense>
+      </MainLayout>
+    ),
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: 'products', element: <ProductList /> },
+      { path: 'product/add', element: <AddProduct /> },
+      { path: 'categories', element: <CategoryList /> },
+      { path: 'categories/add', element: <AddCategory /> },
+      { path: 'brands', element: <BrandList /> },
+      { path: 'brands/add', element: <AddBrand /> },
+    ],
+  },
+];
+
+const authRoutes = [
+  {
+    path: rootPaths.authRoot,
+    element: (
+      <Suspense fallback={<Splash />}>
+        <Outlet />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: paths.signin,
+        element: (
+          <AuthLayout>
+            <SignIn />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: paths.signup,
+        element: (
+          <AuthLayout>
+            <SignUp />
+          </AuthLayout>
+        ),
+      },
+      { path: paths.resetPassword, element: <ResetPassword /> },
+    ],
+  },
+];
+
 const routes = [
   {
     element: (
@@ -27,170 +91,7 @@ const routes = [
         <App />
       </Suspense>
     ),
-    children: [
-      {
-        path: '/admin',
-        element: (
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </MainLayout>
-        ),
-        children: [
-          {
-            index: true,
-            element: <Dashboard />,
-          },
-        ],
-      },
-      {
-        path: '/',
-        // element: (
-        // <MainLayout>
-        //   <Suspense fallback={<PageLoader />}>
-        //     <Outlet />
-        //   </Suspense>
-        // </MainLayout>
-        // ),
-        children: [
-          {
-            index: true,
-            element: <UserApp />,
-          },
-        ],
-      },
-      {
-        path: '/admin/products',
-        element: (
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </MainLayout>
-        ),
-        children: [
-          {
-            index: true,
-            element: <ProductList />,
-          },
-        ],
-      },
-      {
-        path: '/admin/categories',
-        element: (
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </MainLayout>
-        ),
-        children: [
-          {
-            index: true,
-            element: <CategoryList />,
-          },
-        ],
-      },
-      {
-        path: '/admin/brands',
-        element: (
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </MainLayout>
-        ),
-        children: [
-          {
-            index: true,
-            element: <BrandList />,
-          },
-        ],
-      },
-      {
-        path: '/admin/product/add',
-        element: (
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </MainLayout>
-        ),
-        children: [
-          {
-            index: true,
-            element: <AddProduct />,
-          },
-        ],
-      },
-      {
-        path: '/admin/categories/add',
-        element: (
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </MainLayout>
-        ),
-        children: [
-          {
-            index: true,
-            element: <AddCategory />,
-          },
-        ],
-      },
-      {
-        path: '/admin/brands/add',
-        element: (
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </MainLayout>
-        ),
-        children: [
-          {
-            index: true,
-            element: <AddBrand />,
-          },
-        ],
-      },
-      {
-        path: rootPaths.authRoot,
-        element: (
-          <Suspense fallback={<Splash />}>
-            <Outlet />
-          </Suspense>
-        ),
-        children: [
-          {
-            path: paths.signin,
-            element: (
-              <AuthLayout>
-                <SignIn />
-              </AuthLayout>
-            ),
-          },
-          {
-            path: paths.signup,
-            element: (
-              <AuthLayout>
-                <SignUp />
-              </AuthLayout>
-            ),
-          },
-          {
-            path: paths.resetPassword,
-            element: <ResetPassword />,
-          },
-        ],
-      },
-      {
-        path: '*',
-        element: <Error404 />,
-      },
-    ],
+    children: [...userRoutes, ...adminRoutes, ...authRoutes, { path: '*', element: <Error404 /> }],
   },
 ];
 

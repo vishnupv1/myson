@@ -7,7 +7,7 @@ import {
   faLinkedin,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
-import companyLogo from '../../assets/images/CompanyLogo copy.png';
+import companyLogo from '../../assets/images/CompanyLogo.png';
 
 const FooterComponent: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const FooterComponent: React.FC = () => {
       <div id="last">
         {/* Logo and description on the left */}
         <section id="footer-logo">
-          import companyLogo from '../../assets/images/CompanyLogo copy.png';
+          import companyLogo from '../../assets/images/CompanyLogo.png';
           <img src={companyLogo} alt="Company Logo" className="image-fluid" />
           <p
             style={{

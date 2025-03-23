@@ -50,7 +50,7 @@ const CardComponent: React.FC<CardComponentProps> = ({ title }) => {
   }, []);
 
   const handleSelectProduct = (id: string) => {
-    navigate(`/admin/product/${id}`);
+    navigate(`/product/${id}`);
   };
 
   return (
