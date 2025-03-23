@@ -17,7 +17,7 @@ const CategoryList = () => {
     setSearchText(e.target.value);
   };
   const handleAddProduct = () => {
-    navigate('/product/add'); // Navigate to the AddProduct page
+    navigate('/admin/product/add'); // Navigate to the AddProduct page
   };
 
   return (

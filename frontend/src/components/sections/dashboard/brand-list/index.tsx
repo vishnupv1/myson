@@ -17,7 +17,7 @@ const BrandList = () => {
     setSearchText(e.target.value);
   };
   const handleAddBrand = () => {
-    navigate('/brands/add'); // Navigate to the AddProduct page
+    navigate('/admin/brands/add'); // Navigate to the AddProduct page
   };
 
   return (

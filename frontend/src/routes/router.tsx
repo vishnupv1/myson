@@ -29,7 +29,7 @@ const routes = [
     ),
     children: [
       {
-        path: '/',
+        path: '/admin',
         element: (
           <MainLayout>
             <Suspense fallback={<PageLoader />}>
@@ -45,7 +45,7 @@ const routes = [
         ],
       },
       {
-        path: '/user',
+        path: '/',
         // element: (
         // <MainLayout>
         //   <Suspense fallback={<PageLoader />}>
@@ -61,7 +61,7 @@ const routes = [
         ],
       },
       {
-        path: '/products',
+        path: '/admin/products',
         element: (
           <MainLayout>
             <Suspense fallback={<PageLoader />}>
@@ -77,7 +77,7 @@ const routes = [
         ],
       },
       {
-        path: '/categories',
+        path: '/admin/categories',
         element: (
           <MainLayout>
             <Suspense fallback={<PageLoader />}>
@@ -93,7 +93,7 @@ const routes = [
         ],
       },
       {
-        path: '/brands',
+        path: '/admin/brands',
         element: (
           <MainLayout>
             <Suspense fallback={<PageLoader />}>
@@ -109,7 +109,7 @@ const routes = [
         ],
       },
       {
-        path: '/product/add',
+        path: '/admin/product/add',
         element: (
           <MainLayout>
             <Suspense fallback={<PageLoader />}>
@@ -125,7 +125,7 @@ const routes = [
         ],
       },
       {
-        path: '/categories/add',
+        path: '/admin/categories/add',
         element: (
           <MainLayout>
             <Suspense fallback={<PageLoader />}>
@@ -141,7 +141,7 @@ const routes = [
         ],
       },
       {
-        path: '/brands/add',
+        path: '/admin/brands/add',
         element: (
           <MainLayout>
             <Suspense fallback={<PageLoader />}>

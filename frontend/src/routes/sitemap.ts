@@ -23,26 +23,26 @@ const sitemap: MenuItem[] = [
   {
     id: 'dashboard',
     subheader: 'Dashboard',
-    path: '/',
+    path: '/admin',
     icon: 'solar:widget-bold',
     active: true,
   },
   {
     id: 'analytics',
     subheader: 'Products',
-    path: '/products',
+    path: '/admin/products',
     icon: 'solar:chart-square-bold',
   },
   {
     id: 'invoice',
     subheader: 'Categories',
-    path: '/categories',
+    path: '/admin/categories',
     icon: 'solar:ticket-bold',
   },
   {
     id: 'schedule',
     subheader: 'Brands',
-    path: '/brands',
+    path: '/admin/brands',
     icon: 'solar:document-text-bold',
   },
   {

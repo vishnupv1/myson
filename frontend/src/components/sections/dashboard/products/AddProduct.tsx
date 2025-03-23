@@ -131,7 +131,7 @@ const AddProduct = ({
       .then((result) => {
         console.log(`${isEditMode ? 'Product updated' : 'Product added'}:`, result);
         onClose?.();
-        navigate('/products');
+        navigate('/admin/products');
         window.location.reload();
         setLoading(false);
       })
