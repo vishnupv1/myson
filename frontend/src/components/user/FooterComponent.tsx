@@ -15,7 +15,6 @@ const FooterComponent: React.FC = () => {
       <div id="last">
         {/* Logo and description on the left */}
         <section id="footer-logo">
-          import companyLogo from '../../assets/images/CompanyLogo.png';
           <img src={companyLogo} alt="Company Logo" className="image-fluid" />
           <p
             style={{
