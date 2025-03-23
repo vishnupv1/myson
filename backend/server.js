@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/myson", {
+mongoose.connect("mongodb+srv://mysonwasher:mfaHW3sUDl1jxx4C@cluster0.z7sq2.mongodb.net/myson", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
