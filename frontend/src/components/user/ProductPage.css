@@ -1,0 +1,159 @@
+/* ProductPage.css */
+
+.product-page {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .product-image-container {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .product-preview-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .product-preview-images img {
+    width: 60px;
+    /* height: auto; */
+    border: solid 1px #414141;
+    padding: 4px;
+    margin-top: 2px;
+  }
+  
+  
+  .product-main-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .product-main-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .product-details {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .product-description p,
+  .specifications-title {
+    text-align: left;
+  }
+  
+  /* Ensure the table remains responsive */
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table-container th,
+  .table-container td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table-container th {
+    background-color: #f2f2f2;
+  }
+  
+  .enquire-btn {
+    padding: 10px 20px;
+    background-color: #d11616;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .enquire-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .product-page {
+      flex-direction: column;
+      /* padding: 10px; */
+    }
+  
+    .product-main-image img {
+      width: 213px;
+      height: 228px;
+    }
+  
+    .product-image-container,
+    .product-details {
+      max-width: 100%;
+    }
+  
+    .product-preview-images {
+      justify-content: center;
+    }
+    .product-preview-images {
+      display: flex;
+      flex-wrap:nowrap;
+      gap: 20px;
+      height: 60px;
+      /* width: 60px; */
+    }
+  
+    .table-container table {
+      font-size: 14px;
+    }
+  
+    .specifications-title {
+      font-size: 18px;
+    }
+  }
+  
+  /* Mobile View */
+  @media (max-width: 480px) {
+    .enquire-btn {
+      width: 100%;
+      /* padding: 12px; */
+    }
+  
+    .product-description p {
+      font-size: 14px;
+    }
+  
+    .table-container th,
+    .table-container td {
+      padding: 6px;
+    }
+  }
+  /* App.css */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 6px solid #ddd;
+    border-top: 6px solid #d20303; /* Customize the color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+  }
+  

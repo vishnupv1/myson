@@ -46,3 +46,23 @@ export const deleteProduct = async (id: string) => {
     throw error; // Re-throw error to handle it in the calling function
   }
 };
+// Fetch all products
+export const getBrandProducts = async (brand:string) => {
+  try {
+    const res = await axios.get(`${API_URL}/brand/?brand=${brand}`);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+};
+export const getSingleProduct = async (id:any) => {
+  try {
+    const res = await axios.get(`${API_URL}/${id}`);
+    return res.data; // Return the updated category data if needed
+  } catch (error) {
+    console.error("Error editing product:", error);
+    throw error; // Re-throw error to handle it in the calling function
+  }
+};
+

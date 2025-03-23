@@ -9,6 +9,7 @@ import AddCategory from 'components/sections/dashboard/categories/AddCategory';
 import CategoryList from 'components/sections/dashboard/category-list';
 import BrandList from 'components/sections/dashboard/brand-list';
 import AddBrand from 'components/sections/dashboard/brands/AddBrand';
+import UserApp from 'components/user/AppUser';
 
 const App = lazy(() => import('App'));
 const MainLayout = lazy(() => import('layouts/main-layout'));
@@ -40,6 +41,22 @@ const routes = [
           {
             index: true,
             element: <Dashboard />,
+          },
+        ],
+      },
+      {
+        path: '/user',
+        // element: (
+        // <MainLayout>
+        //   <Suspense fallback={<PageLoader />}>
+        //     <Outlet />
+        //   </Suspense>
+        // </MainLayout>
+        // ),
+        children: [
+          {
+            index: true,
+            element: <UserApp />,
           },
         ],
       },

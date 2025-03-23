@@ -1,0 +1,78 @@
+.testimonial {
+    padding: 80px;
+  }
+  
+  .testimonial-container {
+    flex: 1;
+    /* Allow the container to take up available space */
+    margin: 10px;
+    /* Adjusted for better spacing */
+  }
+  
+  .testimonial-card {
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .testimonial-image h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #333;
+    display: flex;
+    align-items: start;
+  }
+  
+  .testimonial-content {
+    margin-top: 15px;
+  }
+  
+  .testimonial-text {
+    font-size: 1em;
+    color: #555;
+  }
+  
+  .testimonial-author {
+    /* margin-top: 2px; */
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .testimonial-content p {
+    padding: 0px 10px 0px 10px !important;
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: large !important;
+    font: bolder !important;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .testimonial-container {
+      flex: 1 1 100%;
+      /* Stack the testimonial cards on top of each other */
+      margin-bottom: 20px;
+      padding-right: 0px;
+    }
+  
+    .testimonial-card {
+      padding-right: 0px;
+      border-top: solid 3px whitesmoke;
+    }
+  
+    .title {
+      font-weight: 400;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .testimonial-container {
+      flex: 1 1 30%;
+      /* Show 3 cards side by side on larger screens */
+    }
+  }
